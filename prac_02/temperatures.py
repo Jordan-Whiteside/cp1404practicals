@@ -2,8 +2,10 @@
 CP1404/CP5632 - Practical
 Pseudocode for temperature conversion
 """
+
+
 def main():
-    """Convert celsius to fahrenheit and vise versa"""
+    """Convert celsius to fahrenheit and vise versa."""
     menu = """C - Convert Celsius to Fahrenheit
     F - Convert Fahrenheit to Celsius
     Q - Quit"""
@@ -26,12 +28,12 @@ def main():
 
 
 def calculate_celsius_from_fahrenheit(fahrenheit):
-    """calculate celsius from fahrenehit"""
+    """Calculate celsius from fahrenehit."""
     celsius = 5 / 9 * (fahrenheit - 32)
     return celsius
 
 
 def calculate_fahrenheit_from_celsius(celsius):
-    """Calculate fahrenheit from celsius"""
+    """Calculate fahrenheit from celsius."""
     fahrenheit = celsius * 9.0 / 5 + 32
     return fahrenheit
