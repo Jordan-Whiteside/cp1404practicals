@@ -12,7 +12,7 @@ def print_asterisks(password):
 
 
 def get_password(minimum_password_length):
-    """Get the password from the user with error checking."""
+    """Get a password from the user with error checking."""
     password = input(f"Password (At least {minimum_password_length} characters): ")
     while len(password) < minimum_password_length:
         print(f"Password must be at least {minimum_password_length} characters")
