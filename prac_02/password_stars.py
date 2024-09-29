@@ -1,3 +1,8 @@
+"""
+Gets password then prints it in asterisks
+"""
+
+
 def main():
     """Ask the user for a password then print the length as asterisks."""
     minimum_password_length = 5
