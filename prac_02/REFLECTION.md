@@ -21,8 +21,8 @@ I need to still improve my time management to keep up with how quick trimesters 
 
 ## What are you currently doing poorly for practicals in this subject that you will change?
 
-...
+My naming of variable could be better and using the imperative voice when doing function docstring and commits
 
 ## What are you doing really well for practicals in this subject?
 
-...
+I am doing well in getting my programs to work and using the right tool for the job
