@@ -18,5 +18,11 @@ except ZeroDivisionError:
 print("Finished.")
 
 # 1. When will a ValueError occur?
+# When no value is entered and when the value isn't and integer (i.e. 0.5 or "string")
+
 # 2. When will a ZeroDivisionError occur?
+# When the denominator is 0
+
 # 3. Could you change the code to avoid the possibility of a ZeroDivisionError?
+# Yes. You could change the code to have an error checking with while loops which avoids the possibility of 0 being entered
+# Error checking while loop found her: https://github.com/CP1404/Starter/wiki/Programming-Patterns#error-checking
