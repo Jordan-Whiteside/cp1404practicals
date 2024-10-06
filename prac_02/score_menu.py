@@ -38,10 +38,9 @@ def determine_score_result(score):
     """Determine score status."""
     if score >= 90:
         return "Excellent"
-    elif score >= 50:
+    if score >= 50:
         return "Passable"
-    else:
-        return "Bad"
+    return "Bad"
 
 def print_asterisks(length):
     """Print Asterisks"""

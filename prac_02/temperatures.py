@@ -6,7 +6,7 @@ Pseudocode for temperature conversion
 
 def main():
     """Convert celsius to fahrenheit and vise versa."""
-    menu = f"C - Convert Celsius to Fahrenheit\nF - Convert Fahrenheit to Celsius\nQ - Quit"
+    menu = "C - Convert Celsius to Fahrenheit\nF - Convert Fahrenheit to Celsius\nQ - Quit"
     print(menu)
     choice = input(">>> ").upper()
     while choice != "Q":
