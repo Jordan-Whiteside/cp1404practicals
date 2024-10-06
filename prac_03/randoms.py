@@ -16,5 +16,7 @@ print(random.uniform(2.5, 5.5))  # line 3"""
 # I saw any number between 2.5 and 4.5 including all decimal points up to 15 (Assuming that's PyCharms built in limit)
 # 4.493337232785274, 4.845204523572509, 5.07702194382949, 3.2803101568278796, 5.108367549074288
 
-import random # Assume this is the top of code
-print(random.randrange(1, 10))
+import random # Assume this is the top of module
+
+# Produce a random number between 1 and 100 inclusive
+print(random.randint(1, 100))
