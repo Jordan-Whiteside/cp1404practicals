@@ -1,5 +1,12 @@
 """Prac 4 - Lists exercises"""
 
+
+usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+username = input("What is your username? ")
+if username in usernames:
+    print("Access granted")
+else:
+    print("Access denied")
 numbers = []
 for i in range(5):
     numbers.append(int(input("Number: ")))
