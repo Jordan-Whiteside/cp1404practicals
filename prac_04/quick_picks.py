@@ -22,6 +22,9 @@ def generate_quick_pick_numbers(quick_pick_numbers):
 
 def display_quick_pick_numbers(quick_pick_numbers):
     quick_pick_numbers.sort()
-    print(quick_pick_numbers)
+    for quick_pick_number in quick_pick_numbers:
+        print(f"{quick_pick_number:2}", end=" ")
+    print(sep="")
+    # print(f"{" ".join(sorted(str(quick_pick_number) for quick_pick_number in quick_pick_numbers)):2}")
 
 main()
