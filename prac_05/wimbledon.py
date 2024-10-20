@@ -14,6 +14,14 @@ def main():
     print(records)
 
 
+def create_champion_wins(records):
+    """Create a dictionary with champion name paired with win(s)"""
+    champion_to_win = {}
+    for record in records:
+        champion_to_win[record[2]] = champion_to_win.get(record[2], 0) + 1
+    return champion_to_win
+
+
 def get_records_from_file(filename):
     """Get records from a file returning a list of lists"""
     records = []
