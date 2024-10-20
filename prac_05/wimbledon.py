@@ -38,8 +38,8 @@ def process_records(records):
 
 def get_records(filename):
     """Get records from a file returning a list of lists."""
+    records = []
     with open(filename, "r", encoding="utf-8-sig") as in_file:
-        records = []
         # record fields Year, Country, Champion, Country, Runner-up, Score in the final
         in_file.readline()
         for line in in_file:
