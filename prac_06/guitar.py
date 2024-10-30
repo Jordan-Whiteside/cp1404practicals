@@ -1,4 +1,8 @@
-"""Class guitar."""
+"""
+Class guitar.
+Predicted: 5min
+Actual: 5min
+"""
 
 class Guitar:
     def __init__(self, name="", year=0, cost=0.0):

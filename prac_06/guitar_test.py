@@ -1,4 +1,8 @@
-"""Guitar test program."""
+"""
+Guitar test program.
+Predicted: 5min
+Actual: 4min
+"""
 from prac_06.guitar import Guitar
 
 gibsion = Guitar("Gibson L-5 CES", 1922, 16035.40)
