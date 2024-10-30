@@ -1,7 +1,7 @@
 """
 Languages program
-Predicted: 10
-Actual: Unknown - Need to ask question.
+Predicted: 10min
+Actual: 10min - about 1 hour if I include finding out I can just do .name for its name *facepalm*
 """
 
 from prac_06.programming_language import ProgrammingLanguage
@@ -13,6 +13,6 @@ languages = [python, ruby, visual_basic]
 print("The dynamically typed languages are:")
 for language in languages:
     if language.is_dynamic():
-        print(language)
+        print(language.language)
 # print(python)
 
