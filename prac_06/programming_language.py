@@ -6,12 +6,13 @@ Actual: 10min
 
 
 class ProgrammingLanguage:
+    """Programing langauge class."""
     def __init__(self, name, typing, reflection, year):
         """Construct a ProgrammingLanguage from given values."""
         self.name = name
-        self.typing = typing.title()
-        self.reflection = bool(reflection)
-        self.year = int(year)
+        self.typing = typing
+        self.reflection = reflection
+        self.year = year
 
     def __str__(self):
         """Return string representation of a ProgrammingLanguage object."""

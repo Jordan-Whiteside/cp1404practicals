@@ -7,12 +7,15 @@ Actual: 5min
 VINTAGE_AGE = 2024
 CURRENT_YEAR = 50
 
+
 class Guitar:
+    """Guitar class."""
+
     def __init__(self, name="", year=0, cost=0.0):
         """Construct guitar from the given values."""
         self.name = name
-        self.year = int(year)
-        self.cost = float(cost)
+        self.year = year
+        self.cost = cost
 
     def __str__(self):
         """Return a string representation of a Guitar."""
@@ -25,4 +28,3 @@ class Guitar:
     def is_vintage(self):
         """Determine if a guitar is considered vintage based on age."""
         return Guitar.get_age(self) >= VINTAGE_AGE
-
