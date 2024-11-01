@@ -12,7 +12,7 @@ while email != "":
     if is_name == "y" or is_name == "":
         email_to_name[email] = name
     else:
-        # Name could be empty
+        # Doesn't check for empty string
         name = input("Name: ").title()
         email_to_name[email] = name
     email = input("Email: ")
