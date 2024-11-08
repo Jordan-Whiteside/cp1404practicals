@@ -22,6 +22,7 @@ class Guitar:
         return f"{self.name} ({self.year}) : ${self.cost}"
 
     def __lt__(self, other):
+        """Define less than operator for instances of class."""
         return self.year < other.year
 
     def get_age(self):
