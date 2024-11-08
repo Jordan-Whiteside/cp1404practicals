@@ -7,6 +7,7 @@ FILENAME = "guitars.csv"
 
 def main():
     guitars = load_file(FILENAME)
+    guitars.sort()
     for guitar in guitars:
         print(guitar)
 
