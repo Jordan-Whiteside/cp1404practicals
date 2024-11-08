@@ -4,8 +4,8 @@ Predicted: 5min
 Actual: 5min
 """
 
-VINTAGE_AGE = 2024
-CURRENT_YEAR = 50
+VINTAGE_AGE = 50
+CURRENT_YEAR = 2024
 
 
 class Guitar:
@@ -27,4 +27,4 @@ class Guitar:
 
     def is_vintage(self):
         """Determine if a guitar is considered vintage based on age."""
-        return Guitar.get_age(self) >= VINTAGE_AGE
+        return self.get_age() >= VINTAGE_AGE
