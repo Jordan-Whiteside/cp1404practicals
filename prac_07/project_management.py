@@ -41,9 +41,9 @@ def main():
 
 def display_project_completion_status(projects):
     """Display all projects based on completion status"""
-    projects.sort(key=attrgetter("priority"))
-    incomplete_projects = [project for project in projects if project.is_incomplete()]
-    complete_projects = [project for project in projects if project.is_complete()]
+    sorted_projects = sorted(projects, key=attrgetter("priority"))
+    incomplete_projects = [project for project in sorted_projects if project.is_incomplete()]
+    complete_projects = [project for project in sorted_projects if project.is_complete()]
     print("Incomplete projects:")
     display_projects(incomplete_projects)
     print("Complete projects:")
