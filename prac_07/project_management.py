@@ -17,7 +17,7 @@ def main():
     projects = load_projects(DEFAULT_FILE)
     print(f"Loaded {len(projects)} from {DEFAULT_FILE}")
     print(MENU)
-    choice = input(">>>").upper()
+    choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
             print("Load from new file")
@@ -28,21 +28,22 @@ def main():
         elif choice == "F":
             print("Filter projects by date")
         elif choice == "A":
-            print("Add new project")
+            add_new_project(projects)
+            print(projects)
         elif choice == "U":
             print("Update project")
         else:
             print("Invalid menu choice")
         print(MENU)
-        choice = input(">>>").upper()
+        choice = input(">>> ").upper()
     print("Quit")
 
 
 def display_project_completion_status(projects):
     """Display all projects based on completion status"""
     projects.sort(key=attrgetter("priority"))
-    incomplete_projects = [project for project in projects if project.completion_percentage < 100]
-    complete_projects = [project for project in projects if project.completion_percentage == 100]
+    incomplete_projects = [project for project in projects if project.is_incomplete()]
+    complete_projects = [project for project in projects if project.is_complete()]
     print("Incomplete projects:")
     display_projects(incomplete_projects)
     print("Complete projects:")
@@ -55,6 +56,19 @@ def display_projects(projects):
         print(f"  {project}")
 
 
+def add_new_project(projects):
+    """Add new project object to list."""
+    print("Let's add a new project")
+    # TODO: Add error checking
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percentage complete: "))
+    new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(new_project)
+
+
 def load_projects(filename):
     records = []
     with open(filename) as in_file:
@@ -63,6 +77,7 @@ def load_projects(filename):
             parts = line.strip().split("\t")
             record = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
             records.append(record)
+    print(records)
     return records
 
 
