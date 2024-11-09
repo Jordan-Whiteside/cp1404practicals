@@ -20,7 +20,7 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            projects = load_new_file(projects)
+            projects = load_new_file()
         elif choice == "S":
             print("Save projects")
         elif choice == "D":
@@ -39,7 +39,7 @@ def main():
     print("Quit")
 
 
-def load_new_file(projects):
+def load_new_file():
     filename = input("filename: ").strip()
     if filename != "":
         projects = load_projects(filename)
