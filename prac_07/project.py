@@ -16,6 +16,9 @@ class Project:
         """String representation of a project object."""
         return f"{self.name}, Start date: {self.start_date}, Priority: {self.priority}, Estimated cost: ${self.cost_estimate}, Completion percentage: %{self.completion_percentage}"
 
+    def __repr__(self):
+        return f"{self.name}, {self.start_date}, {self.priority}, {self.cost_estimate}, {self.completion_percentage}"
+
     def is_complete(self):
         """Determine if project is completed."""
         return self.completion_percentage == 100
