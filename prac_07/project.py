@@ -1,5 +1,6 @@
 """Project class."""
 
+
 class Project:
     """Project class."""
 
@@ -15,10 +16,20 @@ class Project:
         """String representation of a project object."""
         return f"{self.name}, Start date: {self.start_date}, Priority: {self.priority}, Estimated cost: ${self.cost_estimate}, Completion percentage: %{self.completion_percentage}"
 
+    def is_complete(self):
+        """Determine if project is completed."""
+        return self.completion_percentage == 100
+
+    def is_incomplete(self):
+        """Determine if project is incomplete."""
+        return self.completion_percentage < 100
+
+
 def run_tests():
     # text file attributes string, dd/mm/yyyy, int, float, percentage e.g. 55
-    p1 = Project("Jordan", "12/08/2003", 1,100, 0)
+    p1 = Project("Jordan", "12/08/2003", 1, 100, 0)
     print(p1)
+
 
 if __name__ == '__main__':
     run_tests()
