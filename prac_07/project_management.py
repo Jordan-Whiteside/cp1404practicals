@@ -22,8 +22,7 @@ def main():
         if choice == "L":
             projects = load_new_file()
         elif choice == "S":
-            # TODO: Save projects
-            print("Save projects")
+            save_file(projects)
         elif choice == "D":
             display_project_completion_status(projects)
         elif choice == "F":
@@ -37,14 +36,16 @@ def main():
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper()
-    print("Quit")
+    save_file(projects)
+    print("Thank you for using custom-built project management software.")
 
 
 def display_projects_by_date(projects):
     """Display projects after a certain date. Should sort by date."""
     # date_filter = convert_to_datetime_object("20/7/2022")
     date_filter = get_valid_date("Show projects that start after date (dd/mm/yyyy): ")
-    filtered_projects = [project for project in projects if convert_to_datetime_object(project.start_date) >= date_filter]
+    filtered_projects = [project for project in projects if
+                         convert_to_datetime_object(project.start_date) >= date_filter]
     for project in sorted(filtered_projects, key=attrgetter("start_date")):
         print(project)
 
@@ -111,10 +112,16 @@ def get_valid_percentage(prompt):
             print("Invalid input (not an integer)")
     return percentage
 
-
+def save_file(projects):
+    filename = input("Would you like to save to projects.txt? ").strip()
+    if filename != "":
+        save_projects(filename, projects)
+    else:
+        filename = DEFAULT_FILENAME
+        save_projects(filename, projects)
 
 def load_new_file():
-    filename = input("filename: ").strip()
+    filename = input("filename (default - projects.txt): ").strip()
     if filename != "":
         projects = load_projects(filename)
     else:
@@ -191,5 +198,16 @@ def load_projects(filename):
             records.append(record)
     return records
 
-main()
 
+def save_projects(filename, projects):
+    """Save projects to file."""
+    with open(filename, "w") as out_file:
+        # Add field attributes on the first line.
+        print(f"Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage")
+        for project in projects:
+            print(
+                f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}",
+                file=out_file)
+
+
+main()
