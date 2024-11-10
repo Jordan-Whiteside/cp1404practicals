@@ -111,6 +111,7 @@ def get_valid_percentage(prompt):
             print("Invalid input (not an integer)")
     return percentage
 
+
 def save_file(projects):
     filename = input("Would you like to save to projects.txt? ").strip()
     if filename != "":
@@ -118,6 +119,7 @@ def save_file(projects):
     else:
         filename = DEFAULT_FILENAME
         save_projects(filename, projects)
+
 
 def load_new_file():
     filename = input("filename (default - projects.txt): ").strip()
