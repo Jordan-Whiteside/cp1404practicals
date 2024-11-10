@@ -1,11 +1,10 @@
 """
 Project management program.
 Estimated: 5 hours
-Actual:
+Actual: 5hr 19min
 """
-from operator import attrgetter
+from operator import attrgetter, itemgetter
 import datetime
-
 from prac_07.project import Project
 
 DEFAULT_FILENAME = "projects.txt"
@@ -28,8 +27,7 @@ def main():
         elif choice == "D":
             display_project_completion_status(projects)
         elif choice == "F":
-            # TODO: Filer projects by date
-            print("Filter projects by date")
+            display_projects_by_date(projects)
         elif choice == "A":
             add_new_project(projects)
             print(projects)
@@ -42,12 +40,21 @@ def main():
     print("Quit")
 
 
+def display_projects_by_date(projects):
+    """Display projects after a certain date. Should sort by date."""
+    # date_filter = convert_to_datetime_object("20/7/2022")
+    date_filter = get_valid_date("Show projects that start after date (dd/mm/yyyy): ")
+    filtered_projects = [project for project in projects if convert_to_datetime_object(project.start_date) >= date_filter]
+    for project in sorted(filtered_projects, key=attrgetter("start_date")):
+        print(project)
+
+
 def update_project_with_error_checking(projects):
     """Update chosen project with error checking."""
     for project_number, project in enumerate(projects):
         print(f"{project_number} {project}")
     project_choice = int(input("Project choice: "))
-    while project_choice > len(projects) -1:
+    while project_choice > len(projects) - 1:
         print("Invalid project")
         project_choice = int(input("Project choice: "))
     print(f"Record {projects[project_choice]}")
@@ -76,6 +83,7 @@ def update_project_with_error_checking(projects):
             except ValueError:
                 print("Invalid priority")
 
+
 def get_valid_number(prompt):
     is_valid_input = False
     while not is_valid_input:
@@ -103,11 +111,6 @@ def get_valid_percentage(prompt):
             print("Invalid input (not an integer)")
     return percentage
 
-
-def modify_completion_percentage(project):
-    new_percentage = int(input("New percentage: "))
-    if new_percentage != "":
-        project.completion_percentage = new_percentage
 
 
 def load_new_file():
@@ -141,14 +144,38 @@ def display_projects(projects):
 def add_new_project(projects):
     """Add new project object to list."""
     print("Let's add a new project")
-    # TODO: Add error checking
-    name = input("Name: ")
-    start_date = input("Start date (dd/mm/yyyy): ")
-    priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: $"))
-    completion_percentage = int(input("Percentage complete: "))
-    new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    name = get_valid_string("Name: ")
+    start_date = get_valid_date("Start date (dd/mm/yyyy): ")
+    priority = get_valid_number("Priority: ")
+    cost_estimate = float(get_valid_number("Cost estimate: $"))
+    completion_percentage = get_valid_percentage("Percentage complete: ")
+    new_project = Project(name, start_date.strftime("%d/%m/%Y"), priority, cost_estimate, completion_percentage)
     projects.append(new_project)
+
+
+def get_valid_string(prompt):
+    string = input(prompt).strip()
+    while string == "":
+        print("Invalid string must not be empty")
+        string = input(prompt)
+    return string
+
+
+def get_valid_date(prompt):
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            date = input(prompt)
+            date = convert_to_datetime_object(date)
+            is_valid_input = True
+        except ValueError:
+            print("Invalid date")
+    return date
+
+
+def convert_to_datetime_object(string):
+    date = datetime.datetime.strptime(string, "%d/%m/%Y").date()
+    return date
 
 
 def load_projects(filename):
@@ -156,6 +183,7 @@ def load_projects(filename):
     # File attributes Name, Start Date, Priority, Cost Estimate, Completion Percentage
     records = []
     with open(filename) as in_file:
+        # Skip field attributes on the first line.
         in_file.readline()
         for line in in_file:
             parts = line.strip().split("\t")
@@ -163,14 +191,5 @@ def load_projects(filename):
             records.append(record)
     return records
 
-
 main()
 
-# date.strftime("%d/%m/%Y")
-# date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
-# import datetime
-#
-# date_string = input("Date (dd/m/yyyy): ")  # e.g., "30/9/2022"
-# date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-# print(f"That day is/was {date.strftime('%A')}")
-# print(date.strftime("%d/%m/%Y"))
