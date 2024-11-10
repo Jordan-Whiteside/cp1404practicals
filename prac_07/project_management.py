@@ -85,12 +85,12 @@ def update_project_with_error_checking(projects):
                 print("Invalid priority")
 
 
-def get_valid_number(prompt):
+def get_valid_number(prompt, low):
     is_valid_input = False
     while not is_valid_input:
         try:
             number = int(input(prompt).strip())
-            if number < 1:
+            if number < low:
                 print("Invalid priority")
             else:
                 is_valid_input = True
@@ -153,8 +153,10 @@ def add_new_project(projects):
     print("Let's add a new project")
     name = get_valid_string("Name: ")
     start_date = get_valid_date("Start date (dd/mm/yyyy): ")
-    priority = get_valid_number("Priority: ")
-    cost_estimate = float(get_valid_number("Cost estimate: $"))
+    # Priority can't be lower than 1
+    priority = get_valid_number("Priority: ", 1)
+    # Cost can't be lower than $0
+    cost_estimate = float(get_valid_number("Cost estimate: $", 0))
     completion_percentage = get_valid_percentage("Percentage complete: ")
     new_project = Project(name, start_date.strftime("%d/%m/%Y"), priority, cost_estimate, completion_percentage)
     projects.append(new_project)
