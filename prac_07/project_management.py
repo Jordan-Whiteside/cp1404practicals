@@ -29,7 +29,6 @@ def main():
             display_projects_by_date(projects)
         elif choice == "A":
             add_new_project(projects)
-            print(projects)
         elif choice == "U":
             update_project_with_error_checking(projects)
         else:
@@ -205,7 +204,7 @@ def save_projects(filename, projects):
     """Save projects to file."""
     with open(filename, "w") as out_file:
         # Add field attributes on the first line.
-        print(f"Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage")
+        print(f"Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=out_file)
         for project in projects:
             print(
                 f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}",
