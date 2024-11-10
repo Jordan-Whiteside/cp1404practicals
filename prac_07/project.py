@@ -14,9 +14,10 @@ class Project:
 
     def __str__(self):
         """String representation of a project object."""
-        return f"{self.name}, Start date: {self.start_date}, Priority: {self.priority}, Estimated cost: ${self.cost_estimate}, Completion percentage: %{self.completion_percentage}"
+        return f"{self.name}, Start date: {self.start_date}, Priority: {self.priority}, Estimated cost: ${self.cost_estimate}, Completion percentage: {self.completion_percentage}%"
 
     def __repr__(self):
+        """Developer friendly string representation of a project object."""
         return f"{self.name}, {self.start_date}, {self.priority}, {self.cost_estimate}, {self.completion_percentage}"
 
     def is_complete(self):
@@ -29,6 +30,7 @@ class Project:
 
 
 def run_tests():
+    """Run tests for project class."""
     # text file attributes string, dd/mm/yyyy, int, float, percentage e.g. 55
     p1 = Project("Jordan", "12/08/2003", 1, 100, 0)
     print(p1)
