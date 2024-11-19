@@ -6,13 +6,13 @@ CONVERSION_MILES_TO_KM = 1.60934
 
 
 class ConvertMilesKm(App):
-    km_output = StringProperty()
+    output_km = StringProperty()
 
     def build(self):
         """Build app."""
         self.title = "Convert Miles to Kilometres"
         self.root = Builder.load_file('convert_miles_km.kv')
-        self.km_output = "Type distance in miles"
+        self.output_km = "Type distance in miles"
         return self.root
 
     def handle_increment(self, increment):
@@ -24,7 +24,7 @@ class ConvertMilesKm(App):
         """Handle Calculating miles displaying in a label widget."""
         miles = self.get_valid_miles()
         kilometers = miles * CONVERSION_MILES_TO_KM
-        self.root.ids.output_label.text = str(kilometers)
+        self.output_km = str(kilometers)
 
     def get_valid_miles(self):
         """Get a valid mile using exception handling."""
