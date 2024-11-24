@@ -4,7 +4,9 @@ from prac_09.silver_service_taxi import SilverServiceTaxi
 
 MENU = "q)uit, c)hoose taxi, d)rive"
 
+
 def main():
+    """Display menu for taxi simulator program."""
     print("Let's drive!")
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     current_taxi = None
@@ -29,22 +31,28 @@ def main():
     print("Taxis are now:")
     display_taxis(taxis)
 
+
 def display_taxis(taxis):
+    """Display taxis."""
     for i, taxi in enumerate(taxis):
         print(f"{i}, {taxi}")
 
+
 def get_taxi(taxis, current_taxi):
+    """Get a taxi."""
     display_taxis(taxis)
     try:
-        taxi_choice = int(input("Choose taxi: "))
-        current_taxi = taxis[taxi_choice]
+        taxi_index = int(input("Choose taxi: "))
+        current_taxi = taxis[taxi_index]
     except ValueError:
         print("Invalid taxi choice")
     except IndexError:
         print("Invalid taxi choice")
     return current_taxi
 
+
 def drive_taxi(current_taxi):
+    """Drive taxi a distance that is not negative."""
     current_taxi.start_fare()
     try:
         travel_distance = int(input("Drive how far? "))
@@ -56,11 +64,5 @@ def drive_taxi(current_taxi):
         print("Invalid distance")
     print(f"Your {current_taxi.name} trip cost you ${current_taxi.get_fare():.2f}")
 
+
 main()
-
-
-
-
-
-
-
