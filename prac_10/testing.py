@@ -27,6 +27,8 @@ def is_long_word(word, length=5):
     """
     return len(word) >= length
 
+def formate_phrase_as_sentence():
+    pass
 
 def run_tests():
     """Run the tests on the functions."""
