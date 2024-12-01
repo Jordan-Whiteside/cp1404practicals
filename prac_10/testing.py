@@ -27,7 +27,17 @@ def is_long_word(word, length=5):
     """
     return len(word) >= length
 
-def formate_phrase_as_sentence():
+def formate_phrase_as_sentence(phrase):
+    """Add full stop and capitalise first letter.
+    >>> formate_phrase_as_sentence("hello")
+    Hello.
+    >>> formate_phrase_as_sentence("It is an ex parrot.")
+    It is an ex parrot.
+    >>> formate_phrase_as_sentence("I am awesome")
+    I am awesome.
+    >>> formate_phrase_as_sentence("lindsay is awesome.")
+    Lindsay is awesome.
+    """
     pass
 
 def run_tests():
