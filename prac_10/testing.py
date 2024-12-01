@@ -4,6 +4,7 @@ Testing code using assert and doctest
 """
 
 import doctest
+
 from prac_06.car import Car
 
 
@@ -30,15 +31,19 @@ def is_long_word(word, length=5):
 def formate_phrase_as_sentence(phrase):
     """Add full stop and capitalise first letter.
     >>> formate_phrase_as_sentence("hello")
-    Hello.
+    'Hello.'
     >>> formate_phrase_as_sentence("It is an ex parrot.")
-    It is an ex parrot.
+    'It is an ex parrot.'
     >>> formate_phrase_as_sentence("I am awesome")
-    I am awesome.
+    'I am awesome.'
     >>> formate_phrase_as_sentence("lindsay is awesome.")
-    Lindsay is awesome.
+    'Lindsay is awesome.'
     """
-    pass
+    capital = phrase.capitalize()
+    sentence = capital
+    if not phrase.endswith("."):
+        sentence = capital + "."
+    return sentence
 
 def run_tests():
     """Run the tests on the functions."""
